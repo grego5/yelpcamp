@@ -1,0 +1,25 @@
+<% include ./parts/header %>
+	<h1>Sign up</h1>
+
+	<div class="row form">
+		<form action="/register" method="POST">
+			<div class="form-group">
+				<label for="username">Username: </label>
+				<input class="form-control" type="username" id="username" name="username">
+			</div>
+
+			<div class="form-group">
+				<label for="email">Email: </label>
+				<input class="form-control" type="email" id="email" name="email">
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password: </label>
+				<input class="form-control" type="password" id="password" name="password">
+			</div>
+
+			<button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+		</form>
+		<a href="/camps">Go back</a>
+	</div> <!-- row -->
+<% include ./parts/footer %>

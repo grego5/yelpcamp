@@ -1,0 +1,54 @@
+<% include ../parts/header %>
+		<div class="row">
+			<div class="col-md-3">
+				<p class="lead">Yelp Camp</p>
+				<ul class="list-group">
+					<li class="list-group-item active">Category 1</li>
+					<li class="list-group-item">Category 2</li>
+					<li class="list-group-item">Category 3</li>
+				</ul>
+				<form class="text-center" action="/camps/<%=camp._id%>?_method=DELETE" method="POST">
+					<a class="btn btn-default" href="/camps">Back</a>
+					<% if (session && (session._id.equals(camp.author.id))){ %>
+						<a class="btn btn-primary" href="/camps/<%=camp._id%>/edit">Edit</a>
+						<button type="submit" class="btn btn-danger">Delete</button>
+					<% } %>
+				</form>
+			</div> <!-- col end -->
+			<div class="col-md-9">
+				<div class="thumbnail">
+					<img class="img-full" src="<%= camp.image %>">
+				</div>
+				<div class="margin-top segment">
+					<div class="caption-full">
+						<h4 class="pull-right">$9.00/night</h4>
+						<a><h4><%= camp.name %></h4></a>
+					</div>
+					<p><%- camp.info %></p>
+					<div class="label label-default">
+						<em>Submitted by <%=camp.author.username%></em>
+					</div>
+				</div>
+				<div class="well">
+					<div class="text-right">
+						<a class="btn btn-primary margin-bottom" href="/camps/<%=camp._id%>/comment/new">Add comment</a>
+					</div>
+					<% camp.comments.forEach(function(comment){ %>
+						<div class="segment">
+							<h5 class="pull-right"><%=comment.date.toDateString()%></h5>
+							<strong>Posted by: <%=comment.author.username%></strong>
+							<p><%-comment.text%></p>
+							<form class="" 
+								action="/camps/<%=camp._id%>/comment/<%=comment._id%>?_method=DELETE" 
+								method="POST">
+							<% if (session && (session._id.equals(comment.author.id))){ %>
+								<a class="btn btn-primary btn-xs" href="/camps/<%=camp._id%>/comment/<%=comment._id%>/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+								<button type="submit" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+							<% } %>
+						</form>
+						</div>
+				<% }) %>
+				</div> <!-- segment comments container end -->
+			</div> <!-- col end -->
+		</div> <!-- row end -->
+<% include ../parts/footer %>

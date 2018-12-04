@@ -1,0 +1,35 @@
+<% include ../parts/header %>
+	<div class="row">
+			<div class="col-md-3">
+			</div> <!-- col end -->
+			<div class="col-md-9">
+				<div class="margin-top segment">
+					<form action="/camps/<%=camp._id%>?_method=PUT" method="POST">
+						<div class="caption-full">
+							<h4 class="pull-right">$9.00/night</h4>
+							<div class="form-group">
+								<label for="title">Campground name: </label>
+								<input class="form-control" type="text" id="title" name="camp[name]" value="<%=camp.name%>">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="info">Description: </label>
+							<textarea class="form-control" id="info" name="camp[info]" rows="15"><%-camp.info%></textarea>
+						</div>
+
+						<div class="form-group">
+								<label for="image">Image URL: </label>
+								<input class="form-control" type="text" id="image" name="camp[image]" value="<%=camp.image%>">
+						</div>
+
+						<button type="submit" class="btn btn-primary">Save</button>
+						<a href="/camps/<%=camp._id%>" class="btn btn-default">Back</a>
+					</form>
+				</div>
+				<div class="thumbnail">
+					<img class="img-full" src="<%= camp.image %>">
+				</div>
+			</div> <!-- col end -->
+		</div> <!-- row end -->
+<% include ../parts/footer %>

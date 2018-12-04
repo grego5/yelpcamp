@@ -1,0 +1,27 @@
+<% include ../parts/header %>
+	<h1>Add new campground</h1>
+
+	<div class="row form">
+		<form action="/camps" method="POST">
+			<div class="form-group">
+				<label for="title">Campground name: </label>
+				<input class="form-control" type="text" id="title" name="camp[name]">
+			</div>
+
+			<div class="form-group">
+				<label for="image">Image URL: </label>
+				<input class="form-control" type="text" id="image" name="camp[image]">
+			</div>
+
+			<div class="form-group">
+				<label for="info">Description: </label>
+				<textarea class="form-control" id="info" name="camp[info]" rows="10"></textarea>
+			</div>
+
+			<div class="form-group">
+				<button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+			</div>
+		</form>
+		<a href="/camps">Go back</a>
+	</div> <!-- row -->
+<% include ../parts/footer %>
