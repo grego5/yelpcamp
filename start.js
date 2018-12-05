@@ -1,4 +1,6 @@
 var express 	  = require('express'),
+	 fs 			  = require('fs'),
+	 https 		  = require('https'),
 	 app 		 	  = express(),
 	 db 			  = require('mongoose'),
 	 passport 	  = require('passport'),
@@ -14,7 +16,7 @@ app.use(require('body-parser').urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(require('method-override')('_method'));
 app.use(require('express-session')({
-	secret: process.env.session_secret,
+	secret: process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: false,
 }));
@@ -47,6 +49,10 @@ app.get('*', function(req, res){
 	res.render('error404');
 });
 
-app.listen(process.env.PORT, process.env.IP, function(){
+https.createServer({
+    key: fs.readFileSync('./sslcert/server.key'),
+    cert: fs.readFileSync('./sslcert/server.crt'),
+}, app)
+.listen(process.env.PORT, process.env.IP, function(){
 	console.log('Running node on address ' + process.env.IP + ':' + process.env.PORT);
 });
