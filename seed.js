@@ -7,7 +7,7 @@ var request = require('request'),
 User.deleteMany({}, function(err){
 	(err) ? console.log(err) : createUsers(5, 'pwdpwd', function (users){
 		Camp.deleteMany({}, function(err){
-			(err) ? console.log(err) : createCamps(4, users);
+			(err) ? console.log(err) : createCamps(10, users);
 		});
 	});
 });
