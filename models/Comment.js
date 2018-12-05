@@ -1,6 +1,5 @@
 var db = require('mongoose');
-
-db.connect('mongodb://localhost:27017/yelpapp', {useNewUrlParser: true});
+db.connect(process.env.databaseurl + '/yelpapp', {useNewUrlParser: true});
 
 var commentSchema = new db.Schema({
 	author: {

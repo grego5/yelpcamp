@@ -14,7 +14,7 @@ app.use(require('body-parser').urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(require('method-override')('_method'));
 app.use(require('express-session')({
-	secret: 'MwEwjtGQ3gzQBas8nsCrFwMmztdNERuSJQZpkwwZVLkrRfrNxg5WsffBcf9Psfzq',
+	secret: process.env.session_secret,
 	resave: false,
 	saveUninitialized: false,
 }));
