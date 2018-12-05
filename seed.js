@@ -1,28 +1,13 @@
 var request = require('request'),
 	faker 	= require('faker'),
-	// passport = require('passport'),
-	// LocalStrategy = require('passport-local'),
 	User 	= require('./models/User'),
 	Comment = require('./models/Comment'),
 	Camp 	= require('./models/Camp');
 
-// app.use(require('express-session')({
-// 	secret: 'MwEwjtGQ3gzQBas8nsCrFwMmztdNERuSJQZpkwwZVLkrRfrNxg5WsffBcf9Psfzq',
-// 	resave: false,
-// 	saveUninitialized: false,
-// });
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// passport.use(User.createStrategy());
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-
-
 User.deleteMany({}, function(err){
 	(err) ? console.log(err) : createUsers(5, 'pwdpwd', function (users){
 		Camp.deleteMany({}, function(err){
-			(err) ? console.log(err) : createCamps(4, users);
+			(err) ? console.log(err) : createCamps(10, users);
 		});
 	});
 });
