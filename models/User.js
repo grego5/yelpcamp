@@ -1,4 +1,4 @@
-var db = require('mongoose');s
+var db = require('mongoose');
 db.connect('mongodb://localhost:27017/yelpapp', {useNewUrlParser: true});
 
 userSchema = new db.Schema({
