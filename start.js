@@ -14,7 +14,11 @@ app.use(require('body-parser').urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(require('method-override')('_method'));
 app.use(require('express-session')({
+<<<<<<< HEAD
 	secret: process.env.SESSION_SECRET,
+=======
+	secret: 'MwEwjtGQ3gzQBas8nsCrFwMmztdNERuSJQZpkwwZVLkrRfrNxg5WsffBcf9Psfzq',
+>>>>>>> parent of 44eab20... change to accept env variables
 	resave: false,
 	saveUninitialized: false,
 }));
