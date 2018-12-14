@@ -2,19 +2,18 @@ var express 	  = require('express'),
 	 app 		 	  = express(),
 	 db 			  = require('mongoose'),
 	 passport 	  = require('passport'),
-	 localStategy = require('passport-local'),
  	 flash		  = require('connect-flash');
 
 var User = require('./models/User');
 
-db.connect(process.env.databaseurl + '/yelpapp', {useNewUrlParser: true});
+db.connect(process.env.DATABASEURL + '/yelpapp', {useNewUrlParser: true});
 
 app.set('view engine', 'ejs');
 app.use(require('body-parser').urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(require('method-override')('_method'));
 app.use(require('express-session')({
-	secret: process.env.session_secret,
+	secret: process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: false,
 }));
