@@ -2,7 +2,6 @@ var express   	= require('express'),
 	 router    	= new express.Router(),
     sanitizer 	= require('sanitizer'),
     mw			= require('../middleware'),
-    Comment   	= require('../models/Comment');
 	 Camp 	  	= require('../models/Camp');
 
 //home
