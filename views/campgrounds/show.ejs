@@ -33,12 +33,12 @@
                   <h5 class="">Posted by: <%=comment.author.username%></h5>
                   <h6><%=comment.date.toDateString()%></h6>
                </div>
-               <div class="card-body">
+               <div class="card-body p-2">
                   <p class="card-text"><%-comment.text%></p>
                   <form action="/camps/<%=camp._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST">
                      <% if (session && (session._id.equals(comment.author.id))){ %>
-                        <a class="btn btn-primary btn-xs" href="/camps/<%=camp._id%>/comment/<%=comment._id%>/edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                        <button type="submit" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                        <a class="btn btn-primary btn-sm" href="/camps/<%=camp._id%>/comment/<%=comment._id%>/edit"><i class="fas fa-pen"></i></span></a>
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                      <% } %>
                   </form>
                </div>
