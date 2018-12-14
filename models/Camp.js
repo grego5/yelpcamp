@@ -1,5 +1,5 @@
 var db = require('mongoose');
-db.connect(process.env.databaseurl + '/yelpapp', {useNewUrlParser: true});
+db.connect(process.env.DATABASEURL + '/yelpapp', {useNewUrlParser: true});
 
 var cgSchema = new db.Schema({
 	author: {
@@ -12,6 +12,7 @@ var cgSchema = new db.Schema({
 	name: String,
 	image: String,
 	info: String,
+	cost: Number,
 	date: {type: Date, default: Date.now},
 	comments: [{
 		type: db.Schema.Types.ObjectId,

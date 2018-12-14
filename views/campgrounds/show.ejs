@@ -2,7 +2,7 @@
    <section class="container py-4">
       <h1 class="text-center"><%= camp.name %></h1>
       <div class="d-flex justify-content-between ">
-         <h5 class="">$9.00/night</h4>
+         <h5 class="">$<%= camp.cost.toFixed(2) %>/night</h4>
          <h6 class="m-0"><small>Submitted by <%=camp.author.username%></small></h6>
       </div>
       <div class="row mb-3 mx-0 shadow">
