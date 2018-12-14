@@ -7,11 +7,11 @@
 			</p>
 		</header>
 
-		<div class="row text-center flex-wrap"> 
+		<div class="row text-center"> 
 			<% camps.forEach(function(camp) { %>
 				<div class="col-md-3 col-sm-6">
-					<a href="/camps/<%=camp._id%>" class="thumbnail">
-						<div class="caption">
+					<a href="/camps/<%=camp._id%>" class="">
+						<div class="">
 							<h4><%= camp.name %></h4>
 						</div> <!-- caption -->
 						<img src="<%= camp.image %>">
