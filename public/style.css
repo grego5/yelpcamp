@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -6829,6 +6830,8 @@ textarea {
 =======
 =======
 >>>>>>> parent of b6ba26e... bootstrap 4 refactor
+=======
+>>>>>>> parent of b6ba26e... bootstrap 4 refactor
 textarea {
   resize: vertical;
 }
@@ -6836,6 +6839,7 @@ textarea {
 .flex-wrap {
 	display: flex;
 	flex-wrap: wrap;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 
@@ -6936,12 +6940,22 @@ textarea {
 	margin: 30px auto;
 }
 
+=======
+}
+
+.form {
+	width: 30%;
+	margin: 30px auto;
+}
+
+>>>>>>> parent of b6ba26e... bootstrap 4 refactor
 .jumbotron {
 	text-align: center;
 }
 
 .container {
 	margin-bottom: 50px;
+<<<<<<< HEAD
 }
 
 .segment:nth-last-of-type(1n+2) {
@@ -6964,6 +6978,30 @@ textarea {
 	width: 100%;
 }
 
+=======
+}
+
+.segment:nth-last-of-type(1n+2) {
+	margin-bottom: 10px
+}
+
+.segment {
+	padding: 15px;
+
+	border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+ 
+.img-full {
+	width: 100%;
+}
+
+>>>>>>> parent of b6ba26e... bootstrap 4 refactor
 .thumbnail {
 	padding: 0;
 }
@@ -6972,6 +7010,9 @@ textarea {
 	margin-top: 15px;
 }
 
+<<<<<<< HEAD
+>>>>>>> parent of b6ba26e... bootstrap 4 refactor
+=======
 >>>>>>> parent of b6ba26e... bootstrap 4 refactor
 .margin-bottom {
 	margin-bottom: 15px;
@@ -6981,6 +7022,10 @@ textarea {
 	display: inline-block;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+}
+>>>>>>> parent of b6ba26e... bootstrap 4 refactor
+=======
 }
 >>>>>>> parent of b6ba26e... bootstrap 4 refactor
 =======
