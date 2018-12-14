@@ -7,11 +7,19 @@
 			</p>
 		</header>
 
+<<<<<<< HEAD
 		<div class="row text-center"> 
 			<% camps.forEach(function(camp) { %>
 				<div class="col-md-3 col-sm-6">
 					<a href="/camps/<%=camp._id%>" class="">
 						<div class="">
+=======
+		<div class="row text-center flex-wrap"> 
+			<% camps.forEach(function(camp) { %>
+				<div class="col-md-3 col-sm-6">
+					<a href="/camps/<%=camp._id%>" class="thumbnail">
+						<div class="caption">
+>>>>>>> parent of b6ba26e... bootstrap 4 refactor
 							<h4><%= camp.name %></h4>
 						</div> <!-- caption -->
 						<img src="<%= camp.image %>">
