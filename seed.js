@@ -53,6 +53,7 @@ function createCamps(campNum, users){
 					},
 					name: faker.random.word(),
 					image: images[i].urls.small,
+					cost: Math.random()*300,
 					info: faker.lorem.paragraphs(),
 				});
 				var n = Math.floor(Math.random()*5)+1;

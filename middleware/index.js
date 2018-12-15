@@ -25,7 +25,6 @@ var isAuthorized = function(req, res, next){
 			req.flash('error', 'Request is not found');
 			res.redirect('/camps');
 		} else {
-			console.log(JSON.stringify(obj));
 			if (req.user._id.equals(obj.author.id)){
 				next();
 			} else {

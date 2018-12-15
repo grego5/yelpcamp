@@ -1,20 +1,25 @@
 <% include ./parts/header %>
-	<h1>Log in</h1>
+	<section class="container py-4">
+		<h1 class="text-center">Log in</h1>
 
-	<div class="row form">
-		<form action="/login" method="POST">
-			<div class="form-group">
-				<label for="username">Username: </label>
-				<input class="form-control" type="username" id="username" name="username">
-			</div>
+		<div class="row">
+			<div class="col d-flex justify-content-center">
+			<form style="width: 400px;" action="/login" method="POST">
+				<div class="form-group">
+					<label for="username">Username: </label>
+					<input class="form-control" type="username" id="username" name="username">
+				</div>
 
-			<div class="form-group">
-				<label for="password">Password: </label>
-				<input class="form-control" type="password" id="password" name="password">
-			</div>
-
-			<button class="btn btn-primary btn-lg btn-block" type="Log in">Submit</button>
-		</form>
-		<a href="/camps">Go back</a>
-	</div> <!-- row -->
+				<div class="form-group">
+					<label for="password">Password: </label>
+					<input class="form-control" type="password" id="password" name="password">
+				</div>
+				<div class="text-center">
+					<button class="btn btn-primary" type="Log in">Log in</button>
+					<a class="btn btn-outline-secondary" href="/camps">Cancel</a>
+				</div>
+			</form>
+		</div>
+		</div> <!-- row -->
+	</section>
 <% include ./parts/footer %>

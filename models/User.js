@@ -1,5 +1,5 @@
 var db = require('mongoose');
-db.connect(process.env.databaseurl + '/yelpapp', {useNewUrlParser: true});
+db.connect(process.env.DATABASEURL + '/yelpapp', {useNewUrlParser: true});
 
 userSchema = new db.Schema({
 	uername: {type: String, require: true},
