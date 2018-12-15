@@ -1,6 +1,7 @@
 var express 	= require('express'),
 	 router 	= new express.Router(),
 	 passport 	= require('passport'),
+	 Camp		= require('../models/Camp'),
 	 User 		= require('../models/User');
 
 //home
@@ -30,13 +31,26 @@ router.get('/login', function(req, res){
 
 router.post('/login', passport.authenticate('local', {
 	failureRedirect: '/login',
-	successRedirect: '/camps'
-}), function(req, res){});
+}), function(req, res){
+	req.flash('success', 'You\'re logged in')
+	res.redirect('/camps')
+});
 
 router.get('/logout', function(req, res){
 	req.flash('info', 'See you later, ' + req.user.username);
 	req.logout();
 	res.redirect('/camps');
 });
+
+router.get('/profile/:id', function(req, res){
+	Camp.find().where('author.id').equals(req.params.id).exec(function(err, camps){
+		if (err || !camps) {
+			req.flash('error', 'Profile is not found');
+			res.redirect('/camps');
+		} else {
+			res.render('profile', {camps: camps});
+		}
+	})
+})
 
 module.exports = router;

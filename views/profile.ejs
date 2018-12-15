@@ -1,0 +1,15 @@
+<% include ./parts/header %>
+   <section class="container py-4">
+      <h1 class="text-center"><%= camps[0].author.username %>'s campgrounds</h1>
+      <div class="row mb-3 mx-0 shadow">
+			<div class="col d-flex mb-3 flex-column justify-content-between align-items-center">
+				<div class="list-group mb-3">
+				<% camps.forEach(function(camp){ %>
+					<a class="list-group-item" href="/camps/<%= camp._id %>"><%= camp.name %></a>
+				<% }) %>
+				</div>
+				<a class="btn btn-outline-secondary" href="/camps">Back</a>   
+			</div>
+		</div>
+	</section>
+<% include ./parts/footer %>

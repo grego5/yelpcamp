@@ -38,6 +38,9 @@
 	<% } if (error.length>0) {%>
 		<div class="alert alert-danger text-center" role="alert"><%=error%></div>
 	<% } %>
+	<% if (session && session.isAdmin) {%>
+		<div class="alert alert-warning text-center" role="alert">You're an admin</div>
+	<% } %>
 
 <% include loginModal %>
 <% include registerModal %>
