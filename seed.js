@@ -7,7 +7,7 @@ var request = require('request'),
 User.deleteMany({}, function(err){
 	(err) ? console.log(err) : createUsers(5, 'pwdpwd', function (users){
 		Camp.deleteMany({}, function(err){
-			(err) ? console.log(err) : createCamps(10, users);
+			(err) ? console.log(err) : createCamps(4, users);
 		});
 	});
 });
@@ -54,8 +54,14 @@ function createCamps(campNum, users){
 					name: faker.random.word(),
 					image: images[i].urls.small,
 					cost: Math.random()*300,
+					map: {
+						address: faker.address.country(),
+						lat: (Math.random()*180)-90,
+						lng: (Math.random()*360)-180
+					},
 					info: faker.lorem.paragraphs(),
 				});
+				camp.map.address = camp.name;
 				var n = Math.floor(Math.random()*5)+1;
 				addComments(n, camp, users);
 				console.log(camp.name + ' has been created'

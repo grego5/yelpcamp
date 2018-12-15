@@ -13,11 +13,16 @@ var cgSchema = new db.Schema({
 	image: String,
 	info: String,
 	cost: Number,
+	map: {
+		address: String,
+		lat: Number,
+		lng: Number
+	},
 	date: {type: Date, default: Date.now},
 	comments: [{
 		type: db.Schema.Types.ObjectId,
 		ref: 'Comment',
-	}],
+	}]
 });
 
 module.exports = db.model('Camp', cgSchema);

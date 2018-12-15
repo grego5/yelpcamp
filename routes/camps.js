@@ -1,8 +1,15 @@
 var express   	= require('express'),
-	 router    	= new express.Router(),
+	router    	= new express.Router(),
     sanitizer 	= require('sanitizer'),
     mw			= require('../middleware'),
-	 Camp 	  	= require('../models/Camp');
+	Camp 	  	= require('../models/Camp');
+
+var geocoder = require('node-geocoder')({
+		provider: 'google',
+		httpAdapter: 'https',
+		apiKey: process.env.GEOCODER_API_KEY,
+		formatter: null
+	});
 
 //home
 router.get('/', function(req, res){
@@ -44,33 +51,53 @@ router.post('/', mw.isLoggedIn, function(req, res){
 		username: req.user.username
 	}
 	newCamp.info = sanitizer.sanitize(req.body.camp.info);
-
-	Camp.create(newCamp, function(err, camp){
-		if (err) {
-			req.flash('error', 'Request could not be completed');
-			res.redirect('/camps');
-		} else {
-			req.flash('success', 'Campground "'+ camp.name +'" has been created');
-			res.redirect('/camps');
+	geocoder.geocode(req.body.location, function(err, data){
+		if (err || !data.length) {
+			req.flash('error', 'Location is not found');
+			return res.redirect('back');
 		};
-	});
+		newCamp.map = {
+			lat: data[0].latitude,
+			lng: data[0].longitude,
+			address: data[0].formattedAddress
+		};
+		Camp.create(newCamp, function(err, camp){
+			if (err) {
+				req.flash('error', 'Request could not be completed');
+				res.redirect('/camps');
+			} else {
+				req.flash('success', 'Campground "'+ camp.name +'" has been created');
+				res.redirect('/camps');
+			};
+		})
+	})
 });
 
 //put update camp
 router.put('/:id', mw.isLoggedIn, mw.isAuthorized, function(req, res){
-	req.body.camp.info = sanitizer.sanitize(req.body.camp.info);
+	var newCamp = req.body.camp; 
+	newCamp.info = sanitizer.sanitize(req.body.camp.info);
 	var campId = req.params.id;
-
-	Camp.findOneAndUpdate({_id: campId}, req.body.camp, function(err, camp){
-		if (err) {
-			req.flash('error', 'Request could not be completed');
-			res.redirect('/camps');
-		} else {
-			req.flash('success', 'Changes are saved');
-			res.redirect('/camps/' + campId);
+	geocoder.geocode(req.body.location, function(err, data){
+		if (err || !data.length) {
+			req.flash('error', 'Location is not found');
+			return res.redirect('back');
 		};
+		newCamp.map = {
+			lat: data[0].latitude,
+			lng: data[0].longitude,
+			address: data[0].formattedAddress
+		};
+		Camp.findOneAndUpdate({_id: campId}, newCamp, function(err, camp){
+			if (err) {
+				req.flash('error', 'Request could not be completed');
+				res.redirect('/camps');
+			} else {
+				req.flash('success', 'Changes are saved');
+				res.redirect('/camps/' + campId);
+			};
+		});
 	});
-	
 });
 
 //delete camp

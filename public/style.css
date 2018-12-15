@@ -11,6 +11,11 @@ textarea {
   resize: vertical;
 }
 
+#map {
+  width: 100%;
+  min-height: 230px;
+}
+
 .campground a {
   text-decoration: none;
   
