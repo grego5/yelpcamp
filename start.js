@@ -1,7 +1,7 @@
 var express 	  = require('express'),
-	 app 		 	  = express(),
-	 passport 	  = require('passport'),
- 	 flash		  = require('connect-flash');
+	app 	 	  = express(),
+	passport 	  = require('passport'),
+	flash		  = require('connect-flash');
 
 var User = require('./models/User');
 
@@ -23,11 +23,12 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
-	res.locals.title = 'Yelp Camp';
-	res.locals.session = req.user ? req.user : null;
-	res.locals.success   = req.flash('success');
-	res.locals.info   = req.flash('info');
-	res.locals.error   = req.flash('error');
+	res.locals.title 	= 'Yelp Camp';
+	res.locals.session 	= req.user ? req.user : null;
+	res.locals.success  = req.flash('success');
+	res.locals.info   	= req.flash('info');
+	res.locals.error   	= req.flash('error');
+	res.locals.moment 	= require('moment');
 	next();
 });
 

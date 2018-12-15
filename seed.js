@@ -61,7 +61,6 @@ function createCamps(campNum, users){
 					},
 					info: faker.lorem.paragraphs(),
 				});
-				camp.map.address = camp.name;
 				var n = Math.floor(Math.random()*5)+1;
 				addComments(n, camp, users);
 				console.log(camp.name + ' has been created'
