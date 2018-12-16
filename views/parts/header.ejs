@@ -20,8 +20,8 @@
 				<div class="collapse navbar-collapse" id="mainNavLinks">
 					<div class="nav navbar-nav ml-auto">
 						<% if (!session) { %>
-							<a class="nav-item nav-link btn" id="loginBtn">Login</a>
-							<a class="nav-item nav-link btn" id="registerBtn">Sign up</a>
+							<button class="nav-item nav-link btn btn-link" id="loginBtn">Login</button>
+							<button class="nav-item nav-link btn btn-link" id="registerBtn">Sign up</button>
 						<% } else { %>
 							<span class="navbar-text"><%=session.username%>:</span>
 							<a class="nav-item nav-link" href="/logout">Logout</a>

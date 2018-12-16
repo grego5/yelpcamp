@@ -3,14 +3,16 @@
 	<h1 class="text-center">Editing post</h1>
 
 	<div class="row">
-		<div class="col-lg-8 offset-2">
+		<div class="col-lg-8 offset-lg-2">
 			<form action="/camps/<%=camp_id%>/comment/<%=comment._id%>?_method=PUT" method="POST">
 				<div class="form-group">
 					<textarea class="form-control" id="content" name="text" rows="10"><%=comment.text%></textarea>
 				</div>
-
-				<button class="btn btn-primary" type="submit">Save</button>
-				<a class="btn btn-outline-secondary" href="/camps/<%=camp_id%>">Back</a>
+				
+				<div class="text-center">
+					<button class="btn btn-primary" type="submit">Save</button>
+					<a class="btn btn-outline-secondary" href="/camps/<%=camp_id%>">Back</a>
+				</div>
 			</form>
 			
 		</div>

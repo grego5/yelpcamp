@@ -1,7 +1,7 @@
-var express 	  = require('express'),
-	app 	 	  = express(),
-	passport 	  = require('passport'),
-	flash		  = require('connect-flash');
+var express 	= require('express'),
+	 app 	 	   = express(),
+	 passport 	= require('passport'),
+	 flash		= require('connect-flash');
 
 var User = require('./models/User');
 

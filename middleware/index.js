@@ -1,5 +1,5 @@
 var Camp 		= require('../models/Camp'),
-	 Comment   	= require('../models/Comment');
+	Comment   	= require('../models/Comment');
 
 var isLoggedIn = function(req, res, next){
 	if (req.isAuthenticated()) next();
