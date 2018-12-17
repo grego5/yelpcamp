@@ -1,14 +1,24 @@
 <% include ../parts/header %>
 	<section class="container">
-		<header class="jumbotron text-center">
+		<header class="jumbotron d-flex flex-column align-items-center">
 			<h1>Campgrounds</h1>
-			<p>View our hand-picked campgrounds from all over the world</p>
-			<p>
-				<a class="btn btn-primary btn-lg" href="/camps/new">Add camp</a>
-			</p>
+			<p class="lead text-center">View our hand-picked campgrounds from all over the world</p>
+		
+			<form action="/camps" method="GET">
+				<div class="input-group">
+					<a class="btn btn-primary mr-2" href="/camps/new">Add camp</a>
+					<input type="text" name="search" placeholder="Search" class="form-control" aria-label="Search" style="min-width: 20vw">
+					<div class="input-group-append">
+						<button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
+					</div>
+				</div>
+			</form>
 		</header>
 
-		<main class="row text-center"> 
+		<% if (camps.length === 0) {%>
+			<div class="lead text-center">Nothing is found</div>
+		<% } else { %>
+		<div class="row text-center"> 
 			<% camps.forEach(function(camp) { %>
 				<div class="col-lg-3 col-md-6">
 					<article class=" mb-3 campground">
@@ -18,7 +28,7 @@
 						</a> 
 					</article>
 				</div> <!-- col-md-3 col-sm-6 -->
-			<% }) %>
-		</main> <!-- row -->
+			<% })} %>
+			</div> <!-- row -->
 	</section>
 <% include ../parts/footer %>

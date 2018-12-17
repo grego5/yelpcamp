@@ -166,7 +166,7 @@ router.post('/reset/:token', function(req, res){
 					req.flash('error', err.message);
 					return res.redirect('/camps');
 				}
-				req.flash('success', 'You password has been changed');
+				req.flash('success', 'Your password has been changed');
 				return res.redirect('/camps');
 			})
 		},

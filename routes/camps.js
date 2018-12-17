@@ -1,8 +1,9 @@
 var express   	= require('express'),
-	router    	= new express.Router(),
+	 router    	= new express.Router(),
     sanitizer 	= require('sanitizer'),
-    mw			= require('../middleware'),
-	Camp 	  	= require('../models/Camp');
+	 mw			= require('../middleware'),
+    waterfall  = require('async/waterfall'),
+	 Camp 	  	= require('../models/Camp');
 
 var geocoder = require('node-geocoder')({
 		provider: 'google',
@@ -11,12 +12,28 @@ var geocoder = require('node-geocoder')({
 		formatter: null
 	});
 
-//home
-router.get('/', function(req, res){
-	Camp.find({}, function(err, camps){
-		(err) ? console.log(err) : res.render('campgrounds/gallery', {camps: camps});
-	}).limit(8);
-});
+function escapeRegex(text) {
+	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
+
+//gallery + search
+router.get('/', function(req, res, next){
+	if (req.query.search){
+		var regex = new RegExp(escapeRegex(req.query.search), 'gi');
+		Camp.find({$or: [{name: regex}, {info: regex}, {"map.address": regex}] }, function(err, camps) {
+			(err) ? console.log(err) : res.locals.camps = camps;
+			next();
+		}); 
+	} else {
+		Camp.find({}, function(err, camps){
+			(err) ? console.log(err) : res.locals.camps = camps;
+			next();
+		}).limit(8);
+	}	
+}, function(req, res){
+		res.render('campgrounds/gallery');
+	}
+);
 
 //new camp form
 router.get('/new', mw.isLoggedIn, function(req, res){
