@@ -2,7 +2,7 @@
 
 <section class="container py-4">
    <h1 class="text-center">Edit campground</h1>
-	<form action="/camps/<%=camp._id%>?_method=PUT" method="POST">
+	<form action="/camps/<%=camp._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
 		<div class="d-flex justify-content-between ">
          <div class="mb-3">
             <a href="/camps/<%=camp._id%>" class="btn btn-outline-secondary">Back</a>
@@ -34,12 +34,29 @@
                   <textarea class="form-control" id="info" name="camp[info]" rows="25"><%-camp.info%></textarea>
                </div>
             </div>
-		   </div>
+         </div>
+         
+
+         
 		   <div class="col-lg-6">
                <div class="form-group">
-                  <label for="image">Image URL:</label>
-                  <input class="form-control" type="text" id="image" name="camp[image]" value="<%=camp.image%>">
-               </div>
+                     <div class="list-group flex-row" id="uploadTabs" role="tablist">
+                        <a class="list-group-item list-group-item-light list-group-item-action active" href="#imgtab1" role="tab">Link Image</a>
+                        <a class="list-group-item list-group-item-light list-group-item-action" href="#imgtab2" role="tab">Upload Image</a>
+                     </div>
+                        
+                     <div class="tab-content border p-2">
+                        <div class="tab-pane active" id="imgtab1" role="tabpanel">
+                           <input class="form-control" type="text" name="camp[image]" placeholder="URL" value="<%= camp.image %>">
+                        </div>
+                        <div class="tab-pane" id="imgtab2" role="tabpanel">
+                           <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="imageUpload" name="image" accept="image/*">
+                              <label class="custom-file-label" for="imageUpload">Choose file</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
 			  <img class="w-100" src="<%= camp.image %>">
          </div>
       </div>	

@@ -49,6 +49,9 @@ router.post('/login', passport.authenticate('local', {
 });
 
 router.get('/logout', function(req, res){
+	if (!req.user) {
+		return res.redirect('/camps');
+	}
 	req.flash('info', 'See you later, ' + req.user.username);
 	req.logout();
 	res.redirect('/camps');
@@ -81,7 +84,7 @@ router.post('/forgot', function(req, res, next){
 			User.findOne({email: req.body.email}, function(err, user){
 				if (!user) {
 					req.flash('error', 'Account with that email address is not found')
-					return res.redirect('/forgot');
+					next();
 				}
 
 				user.resetPasswordToken = token;
@@ -103,16 +106,14 @@ router.post('/forgot', function(req, res, next){
 					'If you did not request this, just ignore this message'
 			};
 			smtpTransport.sendMail(mailOptions, function(err){
-				if (err) {
-					req.flash('err', err.message);
-					return res.redirect('/forgot');
-				}
-				console.log('mail sent');
-				req.flash('success', 'A reset link has been sent to ' + user.email);
-				return res.redirect('/forgot');
+				(err) ? req.flash('err', err.message) :
+					req.flash('success', 'A reset link has been sent to ' + user.email);
+				next();
 			});
 		},
 	]);
+}, function(req, res){
+	return res.redirect('/forgot');
 });
 
 router.get('/reset/:token', function(req, res){

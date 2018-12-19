@@ -32,3 +32,12 @@ textarea {
   transform: scale(0.97);
   box-shadow: 0 .3rem 1rem rgba(0,0,0,.15);
 }
+
+.list-group-item {
+  text-align: center;
+  padding: .3rem;
+}
+
+.custom-file-label {
+  overflow: hidden;
+}

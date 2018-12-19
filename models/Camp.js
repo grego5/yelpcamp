@@ -11,6 +11,7 @@ var cgSchema = new db.Schema({
 	},
 	name: String,
 	image: String,
+	imageId: String,
 	info: String,
 	cost: Number,
 	map: {
